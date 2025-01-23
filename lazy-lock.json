@@ -1,0 +1,8 @@
+{
+  "ReplaceWithRegister": { "branch": "master", "commit": "832efc23111d19591d495dc72286de2fb0b09345" },
+  "fzf": { "branch": "master", "commit": "243a76002c93b474cf8401b37670a43803a0a2d2" },
+  "fzf.vim": { "branch": "master", "commit": "556f45e79ae5e3970054fee4c4373472604a1b4e" },
+  "gruvbox.nvim": { "branch": "main", "commit": "68c3460a5d1d1a362318960035c9f3466d5011f5" },
+  "lazy.nvim": { "branch": "main", "commit": "d8f26efd456190241afd1b0f5235fe6fdba13d4a" },
+  "nvim-surround": { "branch": "main", "commit": "ae298105122c87bbe0a36b1ad20b06d417c0433e" }
+}
