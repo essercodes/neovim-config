@@ -11,6 +11,7 @@ return {
             'dockerfile',
             'gitignore',
             'go',
+            'html',
             'java',
             'javascript',
             'jsx',
@@ -26,6 +27,7 @@ return {
             'tsx',
             'typescript',
             'vimdoc',
+            'xml',
             'yaml',
             'zsh', 
         }
