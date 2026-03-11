@@ -48,9 +48,9 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 
-			vim.keymap.set("n", "<leader>?", function()
-				require("dapui").eval(nil, { enter = true })
-			end, { desc = "Eval var under char" })
+			-- vim.keymap.set("n", "<leader>?", function()
+			-- 	require("dapui").eval(nil, { enter = true })
+			-- end, { desc = "Eval var under char" })
 
 			vim.keymap.set("n", "<F8>", dap.continue, { desc = "Debug: Continue" })
 			vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debug: Step Over" })
