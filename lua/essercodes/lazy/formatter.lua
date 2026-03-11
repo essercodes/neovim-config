@@ -14,7 +14,10 @@ return {
 		{
 			"<leader>F",
 			function()
-				require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+				local ok, err = pcall(require("conform").format, { formatters = { "injected" }, timeout_ms = 3000 })
+				if not ok then
+					vim.notify("Format error: " .. err, vim.log.levels.ERROR)
+				end
 			end,
 			mode = { "n", "x" },
 			desc = "Format Injected Langs",
