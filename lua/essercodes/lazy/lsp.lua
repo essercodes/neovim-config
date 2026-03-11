@@ -4,6 +4,7 @@ return {
 		"stevearc/conform.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"stevanmilic/nvim-lspimport",
 		"L3MON4D3/LuaSnip",
 		"j-hui/fidget.nvim",
 		"saghen/blink.cmp",
@@ -89,5 +90,7 @@ return {
 				prefix = "",
 			},
 		})
+
+		vim.keymap.set("n", "<leader>gI", require("lspimport").import, { noremap = true, desc = "LSP: Import" })
 	end,
 }
