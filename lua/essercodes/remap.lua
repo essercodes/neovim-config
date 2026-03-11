@@ -1,12 +1,3 @@
--- Open file explorer
-vim.keymap.set("n", "<leader>pv", function()
-  local file = vim.fn.expand('%:p')
-  if vim.fn.filereadable(file) == 1 then
-    vim.cmd("Neotree action=focus position=float reveal_file=" .. file)
-  else
-    vim.cmd("Neotree action=focus position=float")
-  end
-end)
 
 -- Move highlighted text up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -25,5 +16,15 @@ vim.keymap.set("n", "n", "nzzze")
 
 vim.keymap.set("n", "<leader>c", function()
     vim.lsp.buf.rename()
-end, {desc = "LSP Rename"})
+end, {desc = "LSP: Rename"})
+
+-- Open file explorer
+vim.keymap.set("n", "<leader>pv", function()
+  local file = vim.fn.expand('%:p')
+  if vim.fn.filereadable(file) == 1 then
+    vim.cmd("Neotree action=focus position=float reveal_file=" .. file)
+  else
+    vim.cmd("Neotree action=focus position=float")
+  end
+end, {desc = "Project View"})
 

@@ -32,26 +32,26 @@ return {
 
         vim.keymap.set("v", "<leader>9v", function()
             _99.visual()
-        end)
+        end, {desc = "99: Visual"})
 
         vim.keymap.set("n", "<leader>9x", function()
             _99.stop_all_requests()
-        end)
+        end, {desc = "99: Stop All Requests"})
 
         vim.keymap.set("n", "<leader>9s", function()
             _99.search()
-        end)
+        end, {desc = "99: Search"})
 
         vim.keymap.set("n", "<leader>9l", function()
             _99.view_logs()
-        end)
+        end, {desc = "99: View Logs"})
 
         vim.keymap.set("n", "<leader>9m", function()
             require("99.extensions.telescope").select_model()
-        end)
+        end, {desc = "99: Select Model"})
 
         vim.keymap.set("n", "<leader>9p", function()
             require("99.extensions.telescope").select_provider()
-        end)
+        end, {desc = "99: Select Provider"})
     end,
 }
