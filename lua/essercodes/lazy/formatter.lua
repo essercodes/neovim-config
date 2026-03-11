@@ -1,6 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	keys = {
 		{
@@ -12,15 +11,27 @@ return {
 			mode = "",
 			desc = "Format buffer",
 		},
+		{
+			"<leader>F",
+			function()
+				require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+			end,
+			mode = { "n", "x" },
+			desc = "Format Injected Langs",
+		},
 	},
 
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
 			-- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
+			c = { "clang-format" },
+			cpp = { "clang-format" },
 			lua = { "stylua" },
 			python = { "isort", "black" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettier" },
+			typescript = { "prettier" },
+			html = { "prettier" },
 		},
 		-- Set default options
 		default_format_opts = {
@@ -33,6 +44,7 @@ return {
 			shfmt = {
 				append_args = { "-i", "2" },
 			},
+			injected = { options = { ignore_errors = true } },
 		},
 	},
 	init = function()
