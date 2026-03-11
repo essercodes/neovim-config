@@ -7,6 +7,7 @@
   "catppuccin": { "branch": "main", "commit": "12c004cde3f36cb1d57242f1e6aac46b09a0e5b4" },
   "commander.nvim": { "branch": "main", "commit": "84101e8eb1613a72bbdec655b734f891d8a00694" },
   "conform.nvim": { "branch": "master", "commit": "086a40dc7ed8242c03be9f47fbcee68699cc2395" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "fidget.nvim": { "branch": "main", "commit": "7fa433a83118a70fe24c1ce88d5f0bd3453c0970" },
   "gruvbox": { "branch": "main", "commit": "334d5fd49fc8033f26408425366c66c6390c57bb" },
   "harpoon": { "branch": "harpoon2", "commit": "87b1a3506211538f460786c23f98ec63ad9af4e5" },
@@ -17,6 +18,7 @@
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "9a10e096703966335bd5c46c8c875d5b0690dade" },
   "mason.nvim": { "branch": "main", "commit": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "9d6826582a3e8c84787bd7355df22a2812a1ad59" },
+  "neogit": { "branch": "master", "commit": "21f2f4e0aa655a21ea123f9509586260926cf8f2" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "59bce2eef357189c3305e25bc6dd2d138c1683f5" },
@@ -41,6 +43,5 @@
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
   "undotree": { "branch": "master", "commit": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d" },
-  "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }
