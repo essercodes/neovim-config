@@ -48,6 +48,7 @@ return {
 				append_args = { "-i", "2" },
 			},
 			injected = { options = { ignore_errors = true } },
+			prettier = { append_args = { "--tab-width", "4" } },
 		},
 	},
 	init = function()
