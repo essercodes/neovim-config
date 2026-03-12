@@ -4,7 +4,6 @@ return {
 		"stevearc/conform.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"stevanmilic/nvim-lspimport",
 		"L3MON4D3/LuaSnip",
 		"j-hui/fidget.nvim",
 		"saghen/blink.cmp",
@@ -15,15 +14,17 @@ return {
 			formatters_by_ft = {},
 		})
 
+		capabilities = require("blink.cmp").get_lsp_capabilities()
 		require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
-				"rust_analyzer",
+				-- "rust_analyzer",
 				-- "gopls",
 				"vtsls",
 				"tailwindcss",
+				"eslint",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -90,7 +91,5 @@ return {
 				prefix = "",
 			},
 		})
-
-		vim.keymap.set("n", "<leader>gI", require("lspimport").import, { noremap = true, desc = "LSP: Import" })
 	end,
 }

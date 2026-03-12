@@ -3,7 +3,10 @@ return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	opts = {
-		-- add any options here
+		lsp = {
+			signature = { enabled = false }, -- let blink.cmp handle signature help
+			hover = { enabled = false },
+		},
 	},
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

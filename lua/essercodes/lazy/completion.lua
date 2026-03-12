@@ -1,63 +1,70 @@
 return {
-    {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        build = "make install_jsregexp",
-        dependencies = {
-            { "rafamadriz/friendly-snippets" },
-        },
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    },
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+		dependencies = {
+			{ "rafamadriz/friendly-snippets" },
+		},
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+	},
 	{
 		"saghen/blink.cmp",
+		version = "*",
+		build = "cargo build --release",
 		-- optional: provides snippets for the snippet source
+		opts_extend = {
+			"sources.completion.enabled_providers",
+			"sources.compat",
+			"sources.default",
+		},
 		dependencies = {
-			-- "rafamadriz/friendly-snippets",
+			"rafamadriz/friendly-snippets",
 			{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 		},
 
 		-- use a release tag to download pre-built binaries
-		version = "1.*",
+		-- version = "1.*",
 		-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 		-- build = 'cargo build --release',
 		-- If you use nix, you can build from source using latest nightly rust with:
 		-- build = 'nix run .#build-plugin',
 
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
 		opts = {
-			-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-			-- 'super-tab' for mappings similar to vscode (tab to accept)
-			-- 'enter' for enter to accept
-			-- 'none' for no mappings
-			--
-			-- All presets have the following mappings:
-			-- C-space: Open menu or open docs if already open
-			-- C-n/C-p or Up/Down: Select next/previous item
-			-- C-e: Hide menu
-			-- C-k: Toggle signature help (if signature.enabled = true)
-			--
-			-- See :h blink-cmp-config-keymap for defining your own keymap
+
 			keymap = {
-				-- preset = "default",
 				preset = "enter",
+				["<C-u>"] = { "scroll_signature_up", "fallback" },
+				["<C-d>"] = { "scroll_signature_down", "fallback" },
+
+				-- default in all keymap presets
+				["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
 			},
 
-			appearance = {
-				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-				-- Adjusts spacing to ensure icons are aligned
-				nerd_font_variant = "mono",
-			},
+			signature = {
+				enabled = true,
 
-			signatures = { enabled = true },
+				window = { border = "rounded" }, -- Defaults to `vim.o.winborder` on nvim 0.11+ or 'padded' when not defined/<=0.10
+			},
 
 			completion = {
 				documentation = {
 					auto_show = true,
-					-- auto_show_delay_ms = 200,
+					window = {
+                        gap = 2,
+						border = "rounded",
+						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+					},
 				},
 				menu = {
+                    border = "rounded",
+                    winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 					draw = {
+                        gap = 2,
 						treesitter = { "lsp" },
 					},
 				},
@@ -95,6 +102,15 @@ return {
 			-- See the fuzzy documentation for more information
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
-		opts_extend = { "sources.default" },
+		-- See :h blink-cmp-config-keymap for defining your own keymap
+		-- keymap = {
+		-- 	-- preset = "default",
+		-- 	preset = "enter",
+		-- 	["<C-u>"] = { "scroll_signature_up", "fallback" },
+		-- 	["<C-d>"] = { "scroll_signature_down", "fallback" },
+		--
+		-- 	-- default in all keymap presets
+		-- 	["<leader>k"] = { "show_signature", "hide_signature", "fallback" },
+		-- },
 	},
 }
