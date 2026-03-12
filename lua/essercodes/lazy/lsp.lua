@@ -14,7 +14,7 @@ return {
 			formatters_by_ft = {},
 		})
 
-		capabilities = require("blink.cmp").get_lsp_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
@@ -44,7 +44,7 @@ return {
 								},
 							},
 							diagnostics = {
-								globals = { "vim", "capabilities" },
+								globals = { "vim" },
 							},
 							workspace = {
 								library = vim.api.nvim_get_runtime_file("", true),
