@@ -55,7 +55,7 @@ return {
 				documentation = {
 					auto_show = true,
 					window = {
-                        gap = 2,
+                        -- gap = 2,
 						border = "rounded",
 						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 					},
