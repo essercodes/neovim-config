@@ -22,9 +22,9 @@ end, {desc = "LSP: Rename"})
 vim.keymap.set("n", "<leader>pv", function()
   local file = vim.fn.expand('%:p')
   if vim.fn.filereadable(file) == 1 then
-    vim.cmd("Neotree action=focus position=float reveal_file=" .. file)
+    vim.cmd("Neotree action=focus position=current reveal_file=" .. file)
   else
-    vim.cmd("Neotree action=focus position=float")
+    vim.cmd("Neotree action=focus position=current")
   end
 end, {desc = "Project View"})
 
