@@ -10,9 +10,20 @@ return {
 		lazy = false, -- neo-tree will lazily load itself
 
 		opts = {
-            window = {
-                position = "current"
-            }
-        },
+			window = {
+				position = "current",
+			},
+			filesystem = {
+				filtered_items = {
+					hide_hidden = false,
+					hide_dotfiles = false,
+					hide_gitignored = false,
+					hide_ignored = false,
+				},
+				follow_current_file = {
+					enabled = true,
+				},
+			},
+		},
 	},
 }
