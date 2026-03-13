@@ -28,3 +28,5 @@ vim.keymap.set("n", "<leader>pv", function()
   end
 end, {desc = "Project View"})
 
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]])
