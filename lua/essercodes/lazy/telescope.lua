@@ -71,16 +71,16 @@ return {
 
 		vim.keymap.set("n", "<leader>sf", function()
 			pick_file(function(choice)
-				vim.fn.setreg('"', choice)
-				vim.notify("Copied: " .. choice)
-			end)
-		end, { desc = "Find & put Filename" })
-
-		vim.keymap.set("n", "<leader>sF", function()
-			pick_file(function(choice)
 				vim.api.nvim_put({ choice }, "c", true, true)
 			end)
 		end, { desc = "Find & paste Filename" })
+
+		vim.keymap.set("n", "<leader>sF", function()
+			pick_file(function(choice)
+				vim.fn.setreg('"', choice)
+				vim.notify("Copied: " .. choice)
+			end)
+		end, { desc = "Find & yank Filename" })
 
 		vim.keymap.set("n", "<leader>gr", function()
 			builtin.lsp_references()
