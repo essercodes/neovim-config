@@ -33,7 +33,8 @@ return {
 		vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "Search Jump-list" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Search Keymap" })
 		vim.keymap.set("n", "<leader>sh", builtin.man_pages, { desc = "Search Man Pages" })
-		vim.keymap.set("n", "<leader>sf", function()
+
+		local function pick_file(action_fn)
 			local search_dir = vim.fn.input("Search directory: ", vim.fn.getcwd(), "dir")
 			if search_dir == "" then
 				search_dir = vim.fn.getcwd()
@@ -56,18 +57,30 @@ return {
 						local relative_home = vim.fn.fnamemodify(selection.path, ":p:~")
 
 						vim.ui.select({ relative_cwd, relative_buf, absolute, filename, relative_home }, {
-							prompt = "Copy to register:",
+							prompt = "Choose path:",
 						}, function(choice)
 							if choice then
-								vim.fn.setreg('"', choice)
-								vim.notify("Copied: " .. choice)
+								action_fn(choice)
 							end
 						end)
 					end)
 					return true
 				end,
 			})
+		end
+
+		vim.keymap.set("n", "<leader>sf", function()
+			pick_file(function(choice)
+				vim.fn.setreg('"', choice)
+				vim.notify("Copied: " .. choice)
+			end)
 		end, { desc = "Find & put Filename" })
+
+		vim.keymap.set("n", "<leader>sF", function()
+			pick_file(function(choice)
+				vim.api.nvim_put({ choice }, "c", true, true)
+			end)
+		end, { desc = "Find & paste Filename" })
 
 		vim.keymap.set("n", "<leader>gr", function()
 			builtin.lsp_references()
