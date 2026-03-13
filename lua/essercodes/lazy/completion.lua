@@ -34,8 +34,7 @@ return {
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
-		opts = {
-
+		opts = { 
 			keymap = {
 				preset = "enter",
 				["<C-u>"] = { "scroll_signature_up", "fallback" },
@@ -55,7 +54,6 @@ return {
 				documentation = {
 					auto_show = true,
 					window = {
-                        -- gap = 2,
 						border = "rounded",
 						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 					},
@@ -85,12 +83,6 @@ return {
 					["<Left>"] = false,
 				},
 				completion = {
-					--[[ list = { selection = { preselect = false } },
-                menu = {
-                    auto_show = function(ctx)
-                        return vim.fn.getcmdtype() == ":"
-                    end,
-                }, ]]
 					ghost_text = { enabled = true },
 				},
 			},
@@ -102,15 +94,5 @@ return {
 			-- See the fuzzy documentation for more information
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
-		-- See :h blink-cmp-config-keymap for defining your own keymap
-		-- keymap = {
-		-- 	-- preset = "default",
-		-- 	preset = "enter",
-		-- 	["<C-u>"] = { "scroll_signature_up", "fallback" },
-		-- 	["<C-d>"] = { "scroll_signature_down", "fallback" },
-		--
-		-- 	-- default in all keymap presets
-		-- 	["<leader>k"] = { "show_signature", "hide_signature", "fallback" },
-		-- },
 	},
 }
