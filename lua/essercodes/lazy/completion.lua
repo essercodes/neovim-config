@@ -34,9 +34,9 @@ return {
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
-		opts = { 
+		opts = {
 			keymap = {
-				preset = "enter",
+				preset = "super-tab",
 				["<C-u>"] = { "scroll_signature_up", "fallback" },
 				["<C-d>"] = { "scroll_signature_down", "fallback" },
 
