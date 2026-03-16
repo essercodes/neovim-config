@@ -28,8 +28,19 @@ vim.o.expandtab=true
 vim.o.shiftwidth=4
 vim.o.tabstop=4
 
+vim.o.list=true
+vim.o.listchars='tab:>-,space:·,nbsp:␣,conceal:☠,trail:•,eol:¶,precedes:«,extends:»'
+
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-    pattern = 'Makefile',
+    pattern = {'Makefile', '*.yaml'},
     command = 'set noexpandtab',
+})
+
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+    pattern = {'*.md', 'opencode'},
+    callback = function()
+        vim.o.wrap=true
+        vim.o.linebreak=true
+    end,
 })
 
