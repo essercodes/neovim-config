@@ -1,3 +1,5 @@
+vim.keymap.set({"n", "v"}, "j", "gj")
+vim.keymap.set({"n", "v"}, "k", "gk")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted text down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted text up" })
 
@@ -33,4 +35,8 @@ vim.keymap.set("t", "<C-w>k", [[<C-\><C-n><C-w>k]], { desc = "Break focus and mo
 vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><C-w>l]], { desc = "Break focus and move to right pane" })
 
 vim.keymap.set("n", "<leader><leader>", "<C-w>", { desc = "<C-w> window action alias" })
+vim.keymap.set("t", "<leader><leader>h", [[<C-\><C-n><C-w>h]], { desc = "Break focus and move to left pane" })
+vim.keymap.set("t", "<leader><leader>j", [[<C-\><C-n><C-w>j]], { desc = "Break focus and move to below pane" })
+vim.keymap.set("t", "<leader><leader>k", [[<C-\><C-n><C-w>k]], { desc = "Break focus and move to above pane" })
+vim.keymap.set("t", "<leader><leader>l", [[<C-\><C-n><C-w>l]], { desc = "Break focus and move to right pane" })
 vim.keymap.set("n", "<leader>T", "<Cmd>below 20sp | terminal<CR>", { desc = "Open terminal split" })

@@ -8,6 +8,12 @@ return {
 					["<leader>oa"] = { "select_agent", mode = { "n" } },
 				},
 			},
+			hooks = {
+				on_session_loaded = function()
+					vim.o.wrap = true
+					vim.o.linebreak = true
+				end,
+			},
 		})
 	end,
 	dependencies = {
