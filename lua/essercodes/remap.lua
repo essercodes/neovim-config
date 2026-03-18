@@ -12,12 +12,11 @@ vim.keymap.set("n", "N", "Nzzze", { desc = "Center cursor after reverse repeat l
 vim.keymap.set("n", "*", "*zzze", { desc = "Center cursor after search forward for the identifier under the cursor" })
 vim.keymap.set("n", "#", "#zzze", { desc = "Center cursor after search backward for the identifier under the cursor" })
 
-vim.keymap.set("n", "<leader>c", function()
-	vim.lsp.buf.rename()
-end, { desc = "LSP: Rename" })
+vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename, { desc = "LSP: Rename" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Diagnostic: Open float" })
+vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {desc = "LSP: Signature help"})
 
 -- Open file explorer
-
 vim.keymap.set("n", "<leader>pv", function()
 	local file = vim.fn.expand("%:p")
 	if vim.fn.filereadable(file) == 1 then
