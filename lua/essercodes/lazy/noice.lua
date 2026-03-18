@@ -1,4 +1,3 @@
--- lazy.nvim
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
@@ -6,7 +5,18 @@ return {
 		lsp = {
 			signature = { enabled = false }, -- let blink.cmp handle signature help
 			hover = { enabled = false },
+			override = {
+				["vim.lsp.util.stylize_markdown"] = true,
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			},
 		},
+		presets = {
+			bottom_search = true,
+			command_palette = true,
+			long_message_to_split = true,
+            inc_rename = false,
+		},
+		routes = {},
 	},
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
