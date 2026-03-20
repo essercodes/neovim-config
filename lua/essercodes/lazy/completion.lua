@@ -59,13 +59,22 @@ return {
 					},
 				},
 				menu = {
-                    border = "rounded",
-                    winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+					auto_show = true,
+					border = "rounded",
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 					draw = {
-                        gap = 2,
+						gap = 2,
 						treesitter = { "lsp" },
 					},
 				},
+                list = {
+                    selection = {
+                        preselect = function(ctx)
+                            return not require("blink.cmp")
+                                .snippet_active({direction = 1})
+                        end
+                    }
+                }
 			},
 
 			snippets = { preset = "luasnip" },
@@ -78,11 +87,16 @@ return {
 			cmdline = {
 				enabled = true,
 				keymap = {
-					preset = "cmdline",
+					preset = "super-tab",
 					["<Right>"] = false,
 					["<Left>"] = false,
+                    ['<C-n>'] = { 'select_next', 'show', 'fallback' },
+                    ['<C-p>'] = { 'select_prev', 'show', 'fallback' },
 				},
 				completion = {
+                    menu = {
+                        auto_show = true,
+                    },
 					ghost_text = { enabled = true },
 				},
 			},
