@@ -2,6 +2,7 @@ return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	opts = {
+        popupmenu = { enabled = false },
 		lsp = {
 			signature = { enabled = false }, -- let blink.cmp handle signature help
 			hover = { enabled = false },
