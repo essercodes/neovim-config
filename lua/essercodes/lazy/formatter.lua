@@ -46,11 +46,10 @@ return {
 		format_on_save = { timeout_ms = 500 },
 		-- Customize formatters
 		formatters = {
-			shfmt = {
-				append_args = { "-i", "2" },
-			},
+			shfmt = { append_args = { "-i", "2" } },
 			injected = { options = { ignore_errors = true } },
 			prettier = { append_args = { "--tab-width", "4" } },
+			rustfmt = { append_args = { "--config", "wrap_comments=true" } },
 		},
 	},
 

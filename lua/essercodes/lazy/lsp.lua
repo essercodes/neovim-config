@@ -101,6 +101,8 @@ return {
 			},
 		})
 
+        vim.lsp.enable("terraformls")
+
 		vim.diagnostic.config({
 			float = {
 				focusable = false,
