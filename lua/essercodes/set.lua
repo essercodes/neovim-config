@@ -31,7 +31,8 @@ vim.o.tabstop = 4
 
 vim.o.list = true
 -- vim.o.listchars='tab:>-,space:·,nbsp:␣,conceal:☠,trail:•,eol:¶,precedes:«,extends:»'
-vim.o.listchars = "tab:>-,space:·,nbsp:␣,conceal:☠,trail:•,precedes:«,extends:»"
+-- vim.o.listchars = "tab:>-,space:·,nbsp:␣,conceal:☠,trail:•,precedes:«,extends:»"
+vim.o.listchars = "tab:>-,nbsp:␣,conceal:☠,trail:•,precedes:«,extends:»"
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = { "Makefile", "*.yaml" },

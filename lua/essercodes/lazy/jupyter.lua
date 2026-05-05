@@ -1,10 +1,18 @@
 return {
-  "ajbucci/ipynb.nvim",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "neovim/nvim-lspconfig",
-    "nvim-tree/nvim-web-devicons", -- optional, for language icons
-    "folke/snacks.nvim", -- optional, for inline images
-  },
-  opts = {},
+	{
+		"ajbucci/ipynb.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"neovim/nvim-lspconfig",
+			"nvim-tree/nvim-web-devicons", -- optional, for language icons
+			"folke/snacks.nvim", -- optional, for inline images
+		},
+		opts = {},
+	},
+	-- {
+	-- 	"kiyoon/jupynium.nvim",
+	-- 	build = "pip3 install --user .",
+	-- 	-- build = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python",
+	-- 	-- build = "conda run --no-capture-output -n jupynium pip install .",
+	-- },
 }
