@@ -6,7 +6,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted text up"
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Keep cursor in place when appending next line" })
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center cursor after half-page down" })
+vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Center cursor after 1 page down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center cursor after half-page up" })
+vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Center cursor after 1 page up" })
 vim.keymap.set("n", "n", "nzzze", { desc = "Center cursor after repeat last search" })
 vim.keymap.set("n", "N", "Nzzze", { desc = "Center cursor after reverse repeat last search" })
 vim.keymap.set("n", "*", "*zzze", { desc = "Center cursor after search forward for the identifier under the cursor" })

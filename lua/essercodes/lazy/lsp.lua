@@ -24,6 +24,9 @@ return {
 				"vtsls",
 				"tailwindcss",
 				"eslint",
+				-- "jedi_language_server",
+				"pylsp",
+				-- "zuban",
 			},
 			automatic_enable = true,
 		})
@@ -35,6 +38,21 @@ return {
 		})
 
 		-- Server-specific configurations
+		vim.lsp.config("pylsp", {
+			settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							ignore = {
+								"E303",
+								"W391",
+							},
+						},
+					},
+				},
+			},
+		})
+
 		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
@@ -66,12 +84,12 @@ return {
 		vim.lsp.config("rust_analyzer", {
 			settings = {
 				["rust-analyzer"] = {
-				imports = {
-					granularity = {
-						enforce = true,
-						group = "crate",
+					imports = {
+						granularity = {
+							enforce = true,
+							group = "crate",
+						},
 					},
-				},
 					cargo = {
 						allFeatures = true,
 					},
@@ -101,7 +119,7 @@ return {
 			},
 		})
 
-        vim.lsp.enable("terraformls")
+		vim.lsp.enable("terraformls")
 
 		vim.diagnostic.config({
 			float = {

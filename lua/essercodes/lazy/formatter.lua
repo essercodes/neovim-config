@@ -37,6 +37,7 @@ return {
 			typescript = { "prettier" },
 			html = { "prettier" },
 			rust = { "rustfmt", lsp_format = "fallback" },
+            sql = { "pg_format" },
 		},
 		-- Set default options
 		default_format_opts = {

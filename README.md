@@ -13,7 +13,7 @@ brew install ghostscript imagemagick
 Create a python venv for jupyter when python is installed with brew
 ```sh
 python3 -m venv /path/to/create/
-activate /path/to/create/bin/activate
+source /path/to/create/bin/activate
 pip3 install jupyterlab
 deactivate
 ```
@@ -21,3 +21,11 @@ deactivate
 ```sh
 brew install hashicorp/tap/terraform-ls
 ```
+
+Create anaconda environment
+```sh
+conda create --prefix ./.venv
+conda activate ./.venv
+conda install -c conda-forge jupyterlab pandas matplotlib
+```
+
