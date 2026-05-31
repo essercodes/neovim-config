@@ -5,7 +5,9 @@ return {
 		require("opencode").setup({
 			keymap = {
 				input_window = {
-					["<leader>oa"] = { "select_agent", mode = { "n" } },
+					-- removed: became [M-m] cycles through agents
+					-- ["<leader>oa"] = { "select_agent", mode = { "n" } },
+					["<leader>oa"] = { function() require('opencode.api').select_agent() end, mode = { "n" } },
 				},
 			},
 			hooks = {

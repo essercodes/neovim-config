@@ -25,8 +25,9 @@ return {
 				"tailwindcss",
 				"eslint",
 				-- "jedi_language_server",
-				"pylsp",
+				-- "pylsp",
 				-- "zuban",
+                "basedpyright",
 			},
 			automatic_enable = true,
 		})
@@ -37,21 +38,33 @@ return {
 			capabilities = capabilities,
 		})
 
-		-- Server-specific configurations
-		vim.lsp.config("pylsp", {
-			settings = {
-				pylsp = {
-					plugins = {
-						pycodestyle = {
-							ignore = {
-								"E303",
-								"W391",
-							},
-						},
-					},
-				},
-			},
-		})
+		-- -- Server-specific configurations
+		-- vim.lsp.config("pylsp", {
+		-- 	settings = {
+		-- 		pylsp = {
+		-- 			plugins = {
+		-- 				pycodestyle = {
+		-- 					ignore = {
+		-- 						"E303",
+		-- 						"W391",
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+        vim.lsp.config("basedpyright", {
+            settings = {
+                basedpyright = {
+                  analysis = {
+                    diagnosticMode = "openFilesOnly",
+                    inlayHints = {
+                      callArgumentNames = true
+                    }
+                  }
+                }
+              }
+        })
 
 		vim.lsp.config("lua_ls", {
 			settings = {

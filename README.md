@@ -1,5 +1,5 @@
 
-Fore tree-sitter
+For tree-sitter
 ```sh
 brew install rust
 cargo install --locked tree-sitter-cli
@@ -29,3 +29,7 @@ conda activate ./.venv
 conda install -c conda-forge jupyterlab pandas matplotlib
 ```
 
+Install Jupytext for Jupyter Notebooks
+```
+brew install jupytext
+```
