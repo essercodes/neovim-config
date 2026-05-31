@@ -1,14 +1,21 @@
 return {
 	{
-		"ajbucci/ipynb.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"neovim/nvim-lspconfig",
-			"nvim-tree/nvim-web-devicons", -- optional, for language icons
-			"folke/snacks.nvim", -- optional, for inline images
-		},
-		opts = {},
+		"goerz/jupytext.nvim",
+		version = "0.2.0",
+		opts = {
+            format = "auto"
+        }, -- see Options
 	},
+	-- {
+	-- 	"ajbucci/ipynb.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"nvim-tree/nvim-web-devicons", -- optional, for language icons
+	-- 		"folke/snacks.nvim", -- optional, for inline images
+	-- 	},
+	-- 	opts = {},
+	-- },
 	-- {
 	-- 	"kiyoon/jupynium.nvim",
 	-- 	build = "pip3 install --user .",

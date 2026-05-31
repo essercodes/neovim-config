@@ -54,3 +54,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 	desc = "Set terminal to insert mode",
 })
+
+-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+-- 	pattern = { "*.ipynb" },
+-- 	callback = function()
+-- 		vim.o.textwidth = false
+--         vim.o.colorcolumn = false
+-- 	end,
+-- })
