@@ -14,6 +14,8 @@ return {
 				on_session_loaded = function()
 					vim.o.wrap = true
 					vim.o.linebreak = true
+                    vim.o.textwidth = 0
+                    vim.o.colorcolumn = ""
 				end,
 			},
 		})
