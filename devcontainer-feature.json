@@ -1,0 +1,16 @@
+{
+    "name": "Neovim Config",
+    "id": "neovim-config",
+    "version": "0.0.0",
+    "dependsOn": {
+        "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {},
+        "ghcr.io/devcontainers/features/rust": {},
+        "ghcr.io/devcontainers/features/python": {}
+    },
+    "description": "A feature to install Neovim configuration",
+    "installsAfter": [
+        "ghcr.io/duduribeiro/devcontainer-features/neovim",
+        "ghcr.io/devcontainers/features/rust",
+        "ghcr.io/devcontainers/features/python"
+    ]
+}

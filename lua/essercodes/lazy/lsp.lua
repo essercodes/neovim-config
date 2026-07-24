@@ -4,6 +4,7 @@ return {
 		"stevearc/conform.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
 		"L3MON4D3/LuaSnip",
 		"j-hui/fidget.nvim",
 		"saghen/blink.cmp",
@@ -15,23 +16,6 @@ return {
 		})
 
 		require("fidget").setup({})
-		require("mason").setup()
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-				"rust_analyzer",
-				-- "gopls",
-				"vtsls",
-				"tailwindcss",
-				"eslint",
-				-- "jedi_language_server",
-				-- "pylsp",
-				-- "zuban",
-                "basedpyright",
-			},
-			automatic_enable = true,
-		})
-
 		-- Apply blink.cmp capabilities to all LSP servers
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		vim.lsp.config("*", {
