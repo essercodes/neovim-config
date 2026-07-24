@@ -12,7 +12,7 @@ cargo install --locked tree-sitter-cli
 python3 -m venv $PYTHON_VENV
 source $PYTHON_VENV/bin/activate
 
-pip install jupytext
+# pip install jupytext
 
 # Install Agents
 curl -fsSL https://claude.ai/install.sh | bash
