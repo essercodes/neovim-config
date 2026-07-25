@@ -5,23 +5,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
-			require("mason").setup()
-			require("mason-lspconfig").setup()
-		end,
-	},
-
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-            "jay-babu/mason-nvim-dap.nvim",
-		},
-		config = function()
-			require("mason-tool-installer").setup({
-				-- a list of all tools you want to ensure are installed upon
-				-- start
-				ensure_installed = {
+            local ensure_installed = {
 					"basedpyright",
 					"bash-language-server",
                     "cspell",
@@ -36,11 +20,18 @@ return {
 					"vim-language-server",
 					"vint",
 					"vtsls",
-				},
-			})
+				}
+
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+                ensure_installed = ensure_installed,
+            })
+
+            vim.api.nvim_create_user_command("MasonInstallAll", function ()
+              vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
+            end, {})
 		end,
 	},
-
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = {
