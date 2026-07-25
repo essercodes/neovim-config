@@ -22,26 +22,20 @@ return {
 				-- a list of all tools you want to ensure are installed upon
 				-- start
 				ensure_installed = {
+					"basedpyright",
 					"bash-language-server",
                     "cspell",
 					"editorconfig-checker",
-					"lua-language-server",
 					"lua_ls",
 					"shellcheck",
 					"terraformls",
 					"shellcheck",
 					"tailwindcss",
 					"eslint",
-					"basedpyright",
-					"lua_ls",
 					"rust_analyzer",
-					-- "gopls",
-					-- "jedi_language_server",
-					-- "pylsp",
 					"vim-language-server",
 					"vint",
 					"vtsls",
-					-- "zuban",
 				},
 			})
 		end,
