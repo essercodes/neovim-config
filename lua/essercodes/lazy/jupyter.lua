@@ -1,11 +1,11 @@
-return {
-	{
-		"goerz/jupytext.nvim",
-		version = "0.2.0",
-		opts = {
-            format = "auto"
-        }, -- see Options
-	},
+-- return {
+	-- {
+	-- 	"goerz/jupytext.nvim",
+	-- 	version = "0.2.0",
+	-- 	opts = {
+ --            format = "auto"
+ --        }, -- see Options
+	-- },
 	-- {
 	-- 	"ajbucci/ipynb.nvim",
 	-- 	dependencies = {
@@ -22,4 +22,4 @@ return {
 	-- 	-- build = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python",
 	-- 	-- build = "conda run --no-capture-output -n jupynium pip install .",
 	-- },
-}
+-- }
