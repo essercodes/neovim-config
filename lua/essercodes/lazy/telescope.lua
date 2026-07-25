@@ -54,9 +54,29 @@ return {
 			if search_dir == "" then
 				search_dir = vim.fn.getcwd()
 			end
+			search_dir = vim.fn.fnamemodify(search_dir, ":p"):gsub("/+$", "")
+
+			-- files *and* directories, directories rendered with a trailing slash
+			local function entry_maker(line)
+				local rel = line:gsub("^%./", "")
+				if rel == "" or rel == "." then
+					return nil
+				end
+				local absolute = search_dir .. "/" .. rel
+				local is_dir = vim.fn.isdirectory(absolute) == 1
+				local text = is_dir and (rel .. "/") or rel
+				return {
+					value = absolute,
+					path = absolute,
+					display = text,
+					ordinal = text,
+				}
+			end
 
 			require("telescope.builtin").find_files({
 				cwd = search_dir,
+				entry_maker = entry_maker,
+				find_command = { "find", ".", "-mindepth", "1", "(", "-type", "f", "-o", "-type", "d", ")" },
 				attach_mappings = function(prompt_bufnr, map)
 					local actions = require("telescope.actions")
 					local action_state = require("telescope.actions.state")
@@ -65,11 +85,17 @@ return {
 						actions.close(prompt_bufnr)
 						local buf_dir = vim.fn.expand("%:p:h")
 						local selection = action_state.get_selected_entry()
-						local absolute = selection.path
-						local relative_buf = buf_dir ~= "" and ("." .. absolute:sub(#buf_dir + 1)) or absolute
-						local relative_cwd = vim.fn.fnamemodify(selection.path, ":p:.")
-						local filename = vim.fn.fnamemodify(selection.path, ":t")
-						local relative_home = vim.fn.fnamemodify(selection.path, ":p:~")
+						local absolute_raw = selection.path
+						local suffix = vim.fn.isdirectory(absolute_raw) == 1 and "/" or ""
+						local function fmt(p)
+							return (p:gsub("/+$", "")) .. suffix
+						end
+
+						local absolute = fmt(absolute_raw)
+						local relative_buf = buf_dir ~= "" and fmt("." .. absolute_raw:sub(#buf_dir + 1)) or absolute
+						local relative_cwd = fmt(vim.fn.fnamemodify(absolute_raw, ":p:."))
+						local filename = fmt(vim.fn.fnamemodify(absolute_raw:gsub("/+$", ""), ":t"))
+						local relative_home = fmt(vim.fn.fnamemodify(absolute_raw, ":p:~"))
 
 						vim.ui.select({ relative_cwd, relative_buf, absolute, filename, relative_home }, {
 							prompt = "Choose path:",
