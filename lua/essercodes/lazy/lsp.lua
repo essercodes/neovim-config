@@ -4,7 +4,6 @@ return {
 		"stevearc/conform.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
 		"L3MON4D3/LuaSnip",
 		"j-hui/fidget.nvim",
 		"saghen/blink.cmp",
