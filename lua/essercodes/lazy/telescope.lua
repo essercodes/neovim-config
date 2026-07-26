@@ -56,7 +56,7 @@ return {
 			end
 			search_dir = vim.fn.fnamemodify(search_dir, ":p"):gsub("/+$", "")
 
-			-- files *and* directories, directories rendered with a trailing slash
+			-- files *and* directories (including hidden ones), dirs get a trailing slash
 			local function entry_maker(line)
 				local rel = line:gsub("^%./", "")
 				if rel == "" or rel == "." then
@@ -76,7 +76,26 @@ return {
 			require("telescope.builtin").find_files({
 				cwd = search_dir,
 				entry_maker = entry_maker,
-				find_command = { "find", ".", "-mindepth", "1", "(", "-type", "f", "-o", "-type", "d", ")" },
+				hidden = true,
+				-- prune .git, keep every other dotfile/dotdir (e.g. .devcontainer)
+				find_command = {
+					"find",
+					".",
+					"-mindepth",
+					"1",
+					"-name",
+					".git",
+					"-prune",
+					"-o",
+					"(",
+					"-type",
+					"f",
+					"-o",
+					"-type",
+					"d",
+					")",
+					"-print",
+				},
 				attach_mappings = function(prompt_bufnr, map)
 					local actions = require("telescope.actions")
 					local action_state = require("telescope.actions.state")
