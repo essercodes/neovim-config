@@ -17,11 +17,11 @@ return {
 			}
 			-- mason package names; linters/formatters with no LSP
 			local tools = {
-                "cspell",
-                "editorconfig-checker",
-                "shellcheck",
-                "vint" 
-            }
+				"cspell",
+				"editorconfig-checker",
+				"shellcheck",
+				"vint",
+			}
 
 			require("mason").setup()
 			require("mason-lspconfig").setup({ ensure_installed = servers })
@@ -53,9 +53,22 @@ return {
 				end
 
 				-- block until everything settles, so --headless can exit cleanly
-				vim.wait(600000, function()
+				local completed = vim.wait(600000, function()
 					return pending == 0
 				end, 200)
+
+				local failed = {}
+				for _, name in ipairs(packages) do
+					local ok, pkg = pcall(registry.get_package, name)
+					if not ok or not pkg:is_installed() then
+						table.insert(failed, name)
+					end
+				end
+
+				if #failed > 0 or not completed then
+					vim.notify("mason failed: " .. table.concat(failed, ", "), vim.log.levels.ERROR)
+					vim.cmd("cquit 1")
+				end
 			end, {})
 		end,
 	},
