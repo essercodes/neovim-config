@@ -3,6 +3,10 @@ return {
 	name = "opencode",
 	config = function()
 		require("opencode").setup({
+            server = {
+                url='localhost',
+                port='4096',
+            },
 			keymap = {
 				input_window = {
 					-- removed: became [M-m] cycles through agents
