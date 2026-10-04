@@ -30,14 +30,8 @@ end, { desc = "Project View" })
 
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Break terminal focus" })
 vim.keymap.set("t", "<C-[>", [[<C-\><C-n>]], { desc = "Break terminal focus" })
-vim.keymap.set("t", "<C-w>h", [[<C-\><C-n><C-w>h]], { desc = "Break focus and move to left pane" })
-vim.keymap.set("t", "<C-w>j", [[<C-\><C-n><C-w>j]], { desc = "Break focus and move to below pane" })
-vim.keymap.set("t", "<C-w>k", [[<C-\><C-n><C-w>k]], { desc = "Break focus and move to above pane" })
-vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><C-w>l]], { desc = "Break focus and move to right pane" })
 
 vim.keymap.set("n", "<leader><leader>", "<C-w>", { desc = "<C-w> window action alias" })
-vim.keymap.set("t", "<leader><leader>h", [[<C-\><C-n><C-w>h]], { desc = "Break focus and move to left pane" })
-vim.keymap.set("t", "<leader><leader>j", [[<C-\><C-n><C-w>j]], { desc = "Break focus and move to below pane" })
-vim.keymap.set("t", "<leader><leader>k", [[<C-\><C-n><C-w>k]], { desc = "Break focus and move to above pane" })
-vim.keymap.set("t", "<leader><leader>l", [[<C-\><C-n><C-w>l]], { desc = "Break focus and move to right pane" })
+vim.keymap.set("t", "<leader><leader>", [[<C-\><C-n><C-w>]], { desc = "break focus and <C-w> window action alias" })
+
 vim.keymap.set("n", "<leader>T", "<Cmd>below 20sp | terminal<CR>", { desc = "Open terminal split" })
