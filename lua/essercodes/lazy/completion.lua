@@ -67,14 +67,13 @@ return {
 						treesitter = { "lsp" },
 					},
 				},
-                list = {
-                    selection = {
-                        preselect = function(ctx)
-                            return not require("blink.cmp")
-                                .snippet_active({direction = 1})
-                        end
-                    }
-                }
+				list = {
+					selection = {
+						preselect = function(ctx)
+							return not require("blink.cmp").snippet_active({ direction = 1 })
+						end,
+					},
+				},
 			},
 
 			snippets = { preset = "luasnip" },
@@ -90,13 +89,13 @@ return {
 					preset = "super-tab",
 					["<Right>"] = false,
 					["<Left>"] = false,
-                    ['<C-n>'] = { 'select_next', 'show', 'fallback' },
-                    ['<C-p>'] = { 'select_prev', 'show', 'fallback' },
+					["<C-n>"] = { "select_next", "show", "fallback" },
+					["<C-p>"] = { "select_prev", "show", "fallback" },
 				},
 				completion = {
-                    menu = {
-                        auto_show = true,
-                    },
+					menu = {
+						auto_show = true,
+					},
 					ghost_text = { enabled = true },
 				},
 			},
