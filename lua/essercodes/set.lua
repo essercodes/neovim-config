@@ -64,3 +64,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --         vim.o.colorcolumn = false
 -- 	end,
 -- })
+
+vim.o.winborder = "rounded"

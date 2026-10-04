@@ -16,7 +16,20 @@ vim.keymap.set("n", "#", "#zzze", { desc = "Center cursor after search backward 
 
 vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename, { desc = "LSP: Rename" })
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Diagnostic: Open float" })
-vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {desc = "LSP: Signature help"})
+
+vim.keymap.set({ "n" }, "<leader>k", function()
+	local lines_above = vim.fn.winline() - 1
+	local lines_below = vim.fn.winheight(0) - lines_above
+	local above = lines_above > lines_below
+
+	vim.lsp.buf.signature_help({
+		max_width = 100,
+		border = "rounded",
+		anchor_bias = above and "above" or "below",
+		offset_x = 2,
+		offset_y = above and -1 or 0,
+	})
+end, { silent = true, noremap = true, desc = "toggle signature" })
 
 -- Open file explorer
 vim.keymap.set("n", "<leader>pv", function()
