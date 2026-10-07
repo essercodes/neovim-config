@@ -14,7 +14,9 @@ return {
 		},
 		cmd = "Neogit",
 		keys = {
-			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+			{ "<leader>gg", "<cmd>Neogit kind=replace<cr>", desc = "Show Neogit UI (replace)" },
+			{ "<leader>gG", "<cmd>Neogit kind=tab<cr>", desc = "Show Neogit UI (tab)" },
+			{ "<leader>gs", "<cmd>Neogit kind=split<cr>", desc = "Show Neogit UI (split)" },
 		},
 	},
 }
