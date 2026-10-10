@@ -120,7 +120,7 @@ return {
 
 			-- ...your keymaps unchanged...
 			-- Recommended/example keymaps
-            vim.keymap.set({"n", "x"}, "<leader>ao", "", {desc="AI/Opencode"})
+			vim.keymap.set({ "n", "x" }, "<leader>ao", "", { desc = "AI/Opencode" })
 			vim.keymap.set({ "n", "x" }, "<leader>aoa", function()
 				require("opencode").ask("@this: ")
 			end, { desc = "Ask OpenCode…" })
@@ -143,12 +143,16 @@ return {
 	},
 	{
 		"coder/claudecode.nvim",
-		dependencies = { "folke/snacks.nvim" },
-		config = true,
-		-- `cmd` lets lazy.nvim create command stubs that load the plugin on first use,
-		-- so `:ClaudeCode` and friends work on a fresh start. Without it, a keys-only
-		-- spec defers loading until a <leader>a* mapping is pressed and the commands
-		-- would not exist yet.
+		-- dependencies = { "folke/snacks.nvim" },
+		opts = function()
+			local sh = vim.env.SHELL or "bash"
+			return {
+				terminal_cmd = sh .. [[ -ic 'exec claude "$@"' claude]],
+				terminal = {
+					provider = "native", -- built-in :terminal instead of snacks
+				},
+			}
+		end,
 		cmd = {
 			"ClaudeCode",
 			"ClaudeCodeFocus",
