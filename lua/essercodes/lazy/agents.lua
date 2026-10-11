@@ -11,9 +11,10 @@ return {
 			vim.env.OPENCODE_PASSWORD = password
 			vim.env.OPENCODE_SERVER_PASSWORD = password
 
-			-- Run a command through an interactive bash so it gets your shell's PATH
+			-- Run a command through an interactive bash so it gets your shell's PATH and functions
+			-- (no `exec`: it only runs binaries, and `opencode` may be a shell function)
 			local function shell(cmd)
-				return { "bash", "-ic", "exec " .. cmd }
+				return { "bash", "-ic", cmd }
 			end
 
 			-- Start a terminal job in a listed buffer without opening a window
