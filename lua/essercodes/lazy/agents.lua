@@ -145,9 +145,6 @@ return {
 				-- terminal_cmd = "claude_ide.sh",
 				terminal_cmd = vim.fn.executable("claude_ide.sh") == 1 and "claude_ide.sh"
 					or [[bash -ic 'claude "$@"' claude]],
-				terminal = {
-					provider = "native", -- built-in :terminal instead of snacks
-				},
 			}
 		end,
 
