@@ -19,4 +19,6 @@ return {
 			{ "<leader>gs", "<cmd>Neogit kind=split<cr>", desc = "Show Neogit UI (split)" },
 		},
 	},
+	{ "sindrets/diffview.nvim" },
+	{ "lewis6991/gitsigns.nvim" },
 }
