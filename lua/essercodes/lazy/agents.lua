@@ -143,11 +143,13 @@ return {
 	},
 	{
 		"coder/claudecode.nvim",
-		-- dependencies = { "folke/snacks.nvim" },
+		dependencies = { "folke/snacks.nvim" },
 		opts = function()
-			local sh = vim.env.SHELL or "bash"
 			return {
-				terminal_cmd = sh .. [[ -ic 'exec claude "$@"' claude]],
+				-- terminal_cmd = [[bash -ic 'claude "$@"' claude]],
+				-- terminal_cmd = "claude_ide.sh",
+				terminal_cmd = vim.fn.executable("claude_ide.sh") == 1 and "claude_ide.sh"
+					or [[bash -ic 'claude "$@"' claude]],
 				terminal = {
 					provider = "native", -- built-in :terminal instead of snacks
 				},
