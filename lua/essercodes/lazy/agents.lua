@@ -16,17 +16,6 @@ return {
 				return { "bash", "-ic", "exec " .. cmd }
 			end
 
-			-- Open a terminal job in a new split; its process lives as long as the buffer
-			local function open_term(split_cmd, cmd, opts)
-				local prev_win = vim.api.nvim_get_current_win()
-				vim.cmd(split_cmd)
-				local buf = vim.api.nvim_get_current_buf()
-				vim.fn.jobstart(cmd, vim.tbl_extend("force", { term = true }, opts or {}))
-				vim.bo[buf].bufhidden = "hide" -- closing the window hides it, doesn't kill it
-				vim.api.nvim_set_current_win(prev_win)
-				return buf
-			end
-
 			-- Start a terminal job in a listed buffer without opening a window
 			local function background_term(cmd, opts)
 				local buf = vim.api.nvim_create_buf(true, false)
@@ -49,16 +38,21 @@ return {
 				end
 			end
 
+			local tui_cmd = shell("opencode --server " .. server_url)
+			local tui_opts = {
+				win = { position = "right", width = 0.4, enter = false }, -- keep focus in the editor, like before
+			}
+
 			local function start_tui()
-				local tui_buf = open_term("botright vnew", shell("opencode --server " .. server_url))
+				local term = Snacks.terminal.open(tui_cmd, tui_opts)
 				-- Killing the server buffer also closes the TUI, which is useless without it
 				vim.api.nvim_create_autocmd("BufWipeout", {
 					buffer = server_buf,
 					once = true,
 					callback = function()
 						vim.schedule(function()
-							if vim.api.nvim_buf_is_valid(tui_buf) then
-								vim.api.nvim_buf_delete(tui_buf, { force = true })
+							if term.buf and vim.api.nvim_buf_is_valid(term.buf) then
+								vim.api.nvim_buf_delete(term.buf, { force = true })
 							end
 						end)
 					end,
@@ -144,6 +138,7 @@ return {
 	{
 		"coder/claudecode.nvim",
 		dependencies = { "folke/snacks.nvim" },
+
 		opts = function()
 			return {
 				-- terminal_cmd = [[bash -ic 'claude "$@"' claude]],
@@ -155,6 +150,7 @@ return {
 				},
 			}
 		end,
+
 		cmd = {
 			"ClaudeCode",
 			"ClaudeCodeFocus",
@@ -171,6 +167,7 @@ return {
 			"ClaudeCodeDiffDeny",
 			"ClaudeCodeCloseAllDiffs",
 		},
+        
 		keys = {
 			{ "<leader>ac", nil, desc = "AI/Claude Code" },
 			{ "<leader>acc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
