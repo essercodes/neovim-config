@@ -37,9 +37,10 @@ return {
 		vim.keymap.set("n", "<leader>pb", builtin.buffers, { desc = "Search Buffers" })
 		vim.keymap.set("n", "<leader>pr", builtin.oldfiles, { desc = "Search Recent Files" })
 		vim.keymap.set("n", "<leader>pg", builtin.git_files, { desc = "Search Git Files" })
-		-- vim.keymap.set("n", "<leader>ps", builtin.live_grep, { desc = "Grep Search Project" })
+
+		vim.keymap.set("n", "<leader>pS", builtin.live_grep, { desc = "Grep (live) Search Project" })
 		vim.keymap.set("n", "<leader>ps", function()
-			builtin.grep_string({ search = vim.fn.input("Grep > ") })
+			builtin.grep_string({ search = vim.fn.input("Grep > "), use_regex = true })
 		end, { desc = "Grep Search Project" })
 
 		vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "Search Spelling" })
