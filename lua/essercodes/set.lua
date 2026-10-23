@@ -12,7 +12,12 @@ vim.o.wrap = false;
 
 vim.o.swapfile = false;
 vim.o.backup = false;
-vim.o.undodir = os.getenv("HOME") .. "/.vim/undotree";
+
+local git_path = vim.fs.root(0, '.git');
+local undotree_path = git_path and git_path or os.getenv("HOME");
+-- handle escaped characters, like spaces in file names.
+undotree_path = vim.fn.fnameescape(undotree_path);
+vim.o.undodir = undotree_path .. "/.nvim/undotree";
 vim.o.undofile = true;
 
 vim.o.hlsearch = false;
