@@ -1,26 +1,26 @@
-vim.keymap.set({ "n", "v" }, "j", "gj")
-vim.keymap.set({ "n", "v" }, "k", "gk")
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted text down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted text up" })
+vim.keymap.set({ "n", "v" }, "j", "gj");
+vim.keymap.set({ "n", "v" }, "k", "gk");
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted text down" });
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted text up" });
 
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Keep cursor in place when appending next line" })
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Keep cursor in place when appending next line" });
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center cursor after half-page down" })
-vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Center cursor after 1 page down" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center cursor after half-page up" })
-vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Center cursor after 1 page up" })
-vim.keymap.set("n", "n", "nzzze", { desc = "Center cursor after repeat last search" })
-vim.keymap.set("n", "N", "Nzzze", { desc = "Center cursor after reverse repeat last search" })
-vim.keymap.set("n", "*", "*zzze", { desc = "Center cursor after search forward for the identifier under the cursor" })
-vim.keymap.set("n", "#", "#zzze", { desc = "Center cursor after search backward for the identifier under the cursor" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center cursor after half-page down" });
+vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Center cursor after 1 page down" });
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center cursor after half-page up" });
+vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Center cursor after 1 page up" });
+vim.keymap.set("n", "n", "nzzze", { desc = "Center cursor after repeat last search" });
+vim.keymap.set("n", "N", "Nzzze", { desc = "Center cursor after reverse repeat last search" });
+vim.keymap.set("n", "*", "*zzze", { desc = "Center cursor after search forward for the identifier under the cursor" });
+vim.keymap.set("n", "#", "#zzze", { desc = "Center cursor after search backward for the identifier under the cursor" });
 
-vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename, { desc = "LSP: Rename" })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Diagnostic: Open float" })
+vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename, { desc = "LSP: Rename" });
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Diagnostic: Open float" });
 
 vim.keymap.set({ "n" }, "<leader>k", function()
-	local lines_above = vim.fn.winline() - 1
-	local lines_below = vim.fn.winheight(0) - lines_above
-	local above = lines_above > lines_below
+	local lines_above = vim.fn.winline() - 1;
+	local lines_below = vim.fn.winheight(0) - lines_above;
+	local above = lines_above > lines_below;
 
 	vim.lsp.buf.signature_help({
 		max_width = 100,
@@ -28,23 +28,26 @@ vim.keymap.set({ "n" }, "<leader>k", function()
 		anchor_bias = above and "above" or "below",
 		offset_x = 2,
 		offset_y = above and -1 or 0,
-	})
-end, { silent = true, noremap = true, desc = "toggle signature" })
+	});
+end, { silent = true, noremap = true, desc = "toggle signature" });
 
 -- Open file explorer
 vim.keymap.set("n", "<leader>pv", function()
-	local file = vim.fn.expand("%:p")
-	if vim.fn.filereadable(file) == 1 then
-		vim.cmd("Neotree reveal_file=" .. file)
+	local filepath = vim.fn.expand("%:p");
+    
+    filepath = vim.fn.fnameescape(filepath); -- handle escaped characters, like spaces in file names.
+
+	if vim.fn.filereadable(filepath) == 1 then
+		vim.cmd("Neotree reveal_file=" .. filepath);
 	else
-		vim.cmd("Neotree")
+		vim.cmd("Neotree");
 	end
-end, { desc = "Project View" })
+end, { desc = "Project View" });
 
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Break terminal focus" })
-vim.keymap.set("t", "<C-[>", [[<C-\><C-n>]], { desc = "Break terminal focus" })
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Break terminal focus" });
+vim.keymap.set("t", "<C-[>", [[<C-\><C-n>]], { desc = "Break terminal focus" });
 
-vim.keymap.set("n", "<leader><leader>", "<C-w>", { desc = "<C-w> window action alias" })
-vim.keymap.set("t", "<leader><leader>", [[<C-\><C-n><C-w>]], { desc = "break focus and <C-w> window action alias" })
+vim.keymap.set("n", "<leader><leader>", "<C-w>", { desc = "<C-w> window action alias" });
+vim.keymap.set("t", "<leader><leader>", [[<C-\><C-n><C-w>]], { desc = "break focus and <C-w> window action alias" });
 
-vim.keymap.set("n", "<leader>T", "<Cmd>below 20sp | terminal<CR>", { desc = "Open terminal split" })
+vim.keymap.set("n", "<leader>T", "<Cmd>below 20sp | terminal<CR>", { desc = "Open terminal split" });
