@@ -26,11 +26,17 @@ brew install jupytext
 ```
 
 SQL embedded in strings (.py, .js, .jsx, .ts, .tsx) is detected automatically and linted by sqruff.
-In TypeScript/JavaScript it must be an uppercase statement (`SELECT ... FROM`, `INSERT INTO`, `UPDATE ... SET`, `DELETE FROM`, `WITH ... AS (`, `CREATE ... TABLE/INDEX`, `ALTER TABLE`, `DROP TABLE`)
+It must be an uppercase statement (`SELECT ... FROM`, `INSERT INTO`, `UPDATE ... SET`, `DELETE FROM`, `WITH ... AS (`, `CREATE ... TABLE/INDEX`, `ALTER TABLE`, `DROP TABLE`)
 ```ts
 env.DB.prepare(`SELECT id FROM users WHERE id = ?`);
 ```
-Python strings starting with any SQL keyword (any case) are detected.
+A string starting with a `-- sql` comment is also treated as SQL (in TypeScript/JavaScript, only template strings)
+```ts
+env.DB.prepare(`
+  -- sql
+  select id from users where id = ?
+`);
+```
 
 Set the SQL dialect per project with a `.sqruff` file in the project root (default is ansi)
 ```ini

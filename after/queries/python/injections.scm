@@ -1,30 +1,10 @@
 ;; extends
 
-; Strings that start with a SQL keyword (lua patterns: vim regex can't match the
-; leading newline of a triple-quoted string, and lua patterns have no alternation)
+; See the sql? predicate in lazy/treesitter.lua
+
+; 'SELECT ... FROM ...' / """SELECT ... FROM ..."""
 ((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Ss][Ee][Ll][Ee][Cc][Tt]%s")
-  (#set! injection.language "sql"))
-((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Ii][Nn][Ss][Ee][Rr][Tt]%s")
-  (#set! injection.language "sql"))
-((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Uu][Pp][Dd][Aa][Tt][Ee]%s")
-  (#set! injection.language "sql"))
-((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Dd][Ee][Ll][Ee][Tt][Ee]%s")
-  (#set! injection.language "sql"))
-((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Ww][Ii][Tt][Hh]%s")
-  (#set! injection.language "sql"))
-((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Cc][Rr][Ee][Aa][Tt][Ee]%s")
-  (#set! injection.language "sql"))
-((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Aa][Ll][Tt][Ee][Rr]%s")
-  (#set! injection.language "sql"))
-((string_content) @injection.content
-  (#lua-match? @injection.content "^%s*[Dd][Rr][Oo][Pp]%s")
+  (#sql? @injection.content)
   (#set! injection.language "sql"))
 
 ; Explicit opt-in: a string starting with a `-- sql` comment
