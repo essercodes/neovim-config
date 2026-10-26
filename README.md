@@ -54,5 +54,6 @@ exclude_rules = LT05
 dialect = postgres
 exclude_rules = LT05
 ```
-List available dialects with `sqruff dialects`. For Postgres syntax errors, 
+
+List available dialects with `sqruff dialects`. For Postgres syntax errors,
 also add a `postgres-language-server.jsonc` to the project root.
