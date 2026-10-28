@@ -8,6 +8,7 @@ return {
 				"basedpyright",
 				"bashls",
 				"eslint",
+                -- "java_language_server",
 				"lua_ls",
 				"postgres_lsp",
 				"rust_analyzer",

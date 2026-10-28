@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	callback = function()
 		vim.o.wrap = true
 		vim.o.linebreak = true
-		vim.o.formatoptions = "a" .. global_format_opts
+		vim.o.formatoptions = global_format_opts
 		-- vim.o.textwidth = 0;
 		-- vim.o.colorcolumn = "";
 	end,
